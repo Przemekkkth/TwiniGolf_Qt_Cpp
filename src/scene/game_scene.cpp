@@ -3,8 +3,12 @@
 #include <QKeyEvent>
 #include <QGraphicsSceneMouseEvent>
 
+float MouseStatus::m_x = 0.0f;
+float MouseStatus::m_y = 0.0f;
 bool MouseStatus::m_pressed = false;
 bool MouseStatus::m_released = false;
+bool MouseStatus::mouseDown = false;
+bool MouseStatus::mousePressed = false;
 
 GameScene::GameScene(QObject *parent)
     : QGraphicsScene(parent)
@@ -39,6 +43,7 @@ void GameScene::resetStatus()
         m_keys[i]->m_pressed = false;
     }
     m_mouse->m_released = false;
+    MouseStatus::m_pressed = false;
 }
 
 void GameScene::loop()
@@ -52,12 +57,14 @@ void GameScene::loop()
         m_loopTime -= m_loopSpeed;
         updateScene(m_loopSpeed);
         draw();
+
+        resetStatus();
     }
 }
 
 void GameScene::updateScene(float elapsedTime)
 {
-
+    mWorld->update(elapsedTime);
 }
 
 void GameScene::draw()
@@ -104,6 +111,12 @@ void GameScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     m_mouse->m_x = event->scenePos().x();
     m_mouse->m_y = event->scenePos().y();
     m_mouse->m_pressed = true;
+    qDebug() << "Pressed ";
+    if(event->button() == Qt::MouseButton::LeftButton)
+    {
+        MouseStatus::mouseDown = true;
+        MouseStatus::mousePressed = true;
+    }
     QGraphicsScene::mousePressEvent(event);
 }
 
@@ -120,5 +133,11 @@ void GameScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     m_mouse->m_y = event->scenePos().y();
     m_mouse->m_pressed = false;
     m_mouse->m_released = true;
+    if(event->button() == Qt::MouseButton::LeftButton)
+    {
+        MouseStatus::mouseDown = false;
+        MouseStatus::mousePressed = false;
+    }
+
     QGraphicsScene::mouseReleaseEvent(event);
 }

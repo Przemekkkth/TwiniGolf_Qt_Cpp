@@ -7,6 +7,7 @@
 #include "../utils/pixmap_manager.h"
 #include "hole.h"
 #include "tile.h"
+#include "../scene/game_scene.h"
 
 Ball::Ball(int _index)
 {
@@ -22,7 +23,6 @@ Ball::~Ball()
     delete point;
     delete powerBar;
 }
-
 
 void Ball::setVelocity(float x, float y)
 {
@@ -49,6 +49,8 @@ void Ball::setWin(bool p_win)
 
 void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Tile*> tiles, QVector<Hole*> holes)
 {
+    mouseDown    = MouseStatus::mouseDown;
+    mousePressed = MouseStatus::mousePressed;
     deltaTime = 5.0f;
     if (win)
     {
@@ -97,20 +99,19 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
 //        playedSwingFx = false;
         int mouseX = 0;
         int mouseY = 0;
-//        sf::Vector2i mousePos = sf::Mouse::getPosition();
-//        mouseX = mousePos.x;
-//        mouseY = mousePos.y;
-
+        mouseX = MouseStatus::m_x;
+        mouseY = MouseStatus::m_y;
+        qDebug() << "SetInitialPos ";
         setInitialMousePos(mouseX, mouseY);
+        //MouseStatus::mousePressed = false;
     }
     if (mouseDown && canMove)
     {
         //IMPORTANT
         int mouseX = 0;
         int mouseY = 0;
-//        sf::Vector2i mousePos = sf::Mouse::getPosition();
-//        mouseX = mousePos.x;
-//        mouseY = mousePos.y;
+        mouseX = MouseStatus::m_x;
+        mouseY = MouseStatus::m_y;
         setVelocity((mouseX - getInitialMousePos().x())/-150, (mouseY - getInitialMousePos().y())/-150);
         setLaunchedVelocity((mouseX - getInitialMousePos().x())/-150, (mouseY - getInitialMousePos().y())/-150);
         velocity1D = std::sqrt(std::pow(std::abs(getVelocity().x()), 2) + std::pow(std::abs(getVelocity().y()), 2));
@@ -163,9 +164,8 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
             setVelocity(0,0);
             int mouseX = 0;
             int mouseY = 0;
-//            sf::Vector2i mousePos = sf::Mouse::getPosition();
-//            mouseX = mousePos.x;
-//            mouseY = mousePos.y;
+            mouseX = MouseStatus::m_x;
+            mouseY = MouseStatus::m_y;
             setInitialMousePos(mouseX, mouseY);
             canMove = true;
         }

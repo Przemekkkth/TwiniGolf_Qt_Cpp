@@ -129,6 +129,31 @@ void World::drawUIText(GameScene &gScene, QPoint pos, QColor color, QString text
     gScene.addItem(tItem);
 }
 
+void World::update(float elapsedTime)
+{
+    if (!swingPlayed)
+    {
+        swingPlayed = true;
+    }
+    if (!secondSwingPlayed)
+    {
+        secondSwingPlayed = true;
+    }
+    for (Ball* b : balls)
+    {
+        b->update(elapsedTime, mouseDown, mousePressed, tiles, holes);
+    }
+    if(MouseStatus::mousePressed)
+    {
+        MouseStatus::mousePressed = false;
+    }
+    if (balls[0]->getScale().x() < 0.0f && balls[1]->getScale().x() < 0.0f)
+    {
+        level++;
+        loadLevel(level);
+    }
+}
+
 QVector<Tile *> World::loadTiles(int level)
 {
     QVector<Tile*> temp = {};

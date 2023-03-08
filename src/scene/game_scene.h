@@ -14,10 +14,12 @@ struct KeyStatus
 
 struct MouseStatus
 {
-    float m_x = 0.0f;
-    float m_y = 0.0f;
+    static float m_x;
+    static float m_y;
     static bool m_released;
     static bool m_pressed;
+    static bool mouseDown;
+    static bool mousePressed;
 };
 
 
