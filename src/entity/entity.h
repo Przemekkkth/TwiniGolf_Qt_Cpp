@@ -26,6 +26,7 @@ public:
 
     void update(float time);
     QRect getCurrentFrame();
+    float getAngle();
     QPixmap tex;
 private:
     QVector2D pos;

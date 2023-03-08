@@ -53,6 +53,7 @@ void PowerBar::draw(GameScene &target) const
     fgTransform.scale(getFGScale().x(), getFGScale().y());
     fgTransform.rotate(getAngle());
     fgItem->setTransform(fgTransform);
+    fgItem->moveBy(+4,+4);
     target.addItem(fgItem);
 
 //    sf::Sprite fgSprite;

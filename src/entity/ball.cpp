@@ -117,8 +117,13 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
         velocity1D = std::sqrt(std::pow(std::abs(getVelocity().x()), 2) + std::pow(std::abs(getVelocity().y()), 2));
         launchedVelocity1D = velocity1D;
 
-        point->setPos(getPos().x() + 8, getPos().y() + 8 );// + 8 - 32);
+        //point->setPos(getPos().x() + 8, getPos().y() + 8 );// + 8 - 32);
+        point->setPos(getPos().x()+8, getPos().y() + 8);
+        point->setOrigin(getPos().x()+8, getPos().y()+8);
         point->setAngle(std::atan2(velocity.y(), velocity.x())*(180/3.1415) + 90);
+        point->setPos(point->getPos().x() - 8*cosf(point->getAngle()*(3.14f/180.0f)),
+                      point->getPos().y() - 8*sinf(point->getAngle()*(3.14f/180.0f)));
+        qDebug() << point->getAngle();
 
         dirX = velocity.x()/std::abs(velocity.x());
         dirY = velocity.y()/std::abs(velocity.y());

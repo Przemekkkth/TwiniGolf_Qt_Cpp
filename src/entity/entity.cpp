@@ -78,6 +78,11 @@ QRect Entity::getCurrentFrame()
     return currentFrame;
 }
 
+float Entity::getAngle()
+{
+    return angle;
+}
+
 void Entity::draw(GameScene &target) const
 {
     QGraphicsPixmapItem* pItem = new QGraphicsPixmapItem();
