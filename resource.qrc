@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/sprite/powermeter_overlay.png</file>
+        <file>res/sprite/point.png</file>
+        <file>res/sprite/powermeter_fg.png</file>
+        <file>res/sprite/ball_shadow.png</file>
+        <file>res/sprite/tile64_dark.png</file>
+        <file>res/sprite/tile64_light.png</file>
+        <file>res/sprite/tile32_dark.png</file>
+        <file>res/sprite/tile32_light.png</file>
+        <file>res/sprite/ball.png</file>
+        <file>res/sprite/hole.png</file>
+        <file>res/sprite/bg.png</file>
+        <file>res/sprite/title.png</file>
+        <file>res/sprite/buttons.png</file>
+        <file>res/sprite/sfml-logo-small.png</file>
+        <file>res/sprite/powermeter_bg.png</file>
+        <file>res/sprite/levelText_bg.png</file>
+        <file>res/sprite/UI_bg.png</file>
+        <file>res/font/minecraft.ttf</file>
+    </qresource>
+</RCC>
