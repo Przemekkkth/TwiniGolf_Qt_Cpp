@@ -123,5 +123,8 @@ namespace LAYER
     static constexpr const int ENTITY = 10;
 }
 
+static const float RAD_TO_DEGREE  = 180.0f/3.14f;
+static const float DEGREE_TO_RAD  = 3.14f/180.0f;
+
 #endif // UTILS_H
 

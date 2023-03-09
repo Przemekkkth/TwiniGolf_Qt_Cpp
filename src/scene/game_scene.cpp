@@ -111,7 +111,7 @@ void GameScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     m_mouse->m_x = event->scenePos().x();
     m_mouse->m_y = event->scenePos().y();
     m_mouse->m_pressed = true;
-    qDebug() << "Pressed ";
+
     if(event->button() == Qt::MouseButton::LeftButton)
     {
         MouseStatus::mouseDown = true;

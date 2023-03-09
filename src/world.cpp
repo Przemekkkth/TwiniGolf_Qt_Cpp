@@ -15,9 +15,7 @@ World::World()
     balls[1] = {new Ball(1)};
     holes = { new Hole(QVector2D(0.0f, 0.0f)), new Hole(QVector2D(0.0f, 0.0f))};
 
-
-    level = 1;
-    //std::cout << "level " << level << std::endl;
+    level = 0;
     tiles = loadTiles(level);
     gameRunning = true;
     mouseDown = false;
@@ -368,7 +366,6 @@ void World::loadLevel(int level)
     case 8:
         balls[0]->setPos(32*4+8, 32*9+8);
         holes.at(0)->setPos(32*5+8, 32*2+8);
-        //temp.push_back(new Tile(mTextures, sf::Vector2f(32*4, 32*4), Tile::Type::Dark32));
         balls[1]->setPos(32*4+8+32*10, 32*9+8);
         holes.at(1)->setPos(32*4+8+32*10, 32*3+8);
         break;

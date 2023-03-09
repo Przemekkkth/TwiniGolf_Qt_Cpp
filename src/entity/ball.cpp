@@ -1,13 +1,14 @@
 #include "ball.h"
 #include "point.h"
 #include "power_bar.h"
-#include <vector>
-#include <cmath>
-#include <iostream>
 #include "../utils/pixmap_manager.h"
+#include "../utils/utils.h"
 #include "hole.h"
 #include "tile.h"
 #include "../scene/game_scene.h"
+#include <vector>
+#include <cmath>
+#include <iostream>
 
 Ball::Ball(int _index)
 {
@@ -15,7 +16,6 @@ Ball::Ball(int _index)
     index = _index;
     point = new Point();
     powerBar = new PowerBar();
-
 }
 
 Ball::~Ball()
@@ -51,7 +51,8 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
 {
     mouseDown    = MouseStatus::mouseDown;
     mousePressed = MouseStatus::mousePressed;
-    deltaTime = 5.0f;
+    //constant(speed)
+    deltaTime /= 3.0f;
     if (win)
     {
         if (getPos().x() < target.x())
@@ -95,19 +96,15 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
 
     if (mousePressed && canMove)
     {
-        //IMPORTANT
-//        playedSwingFx = false;
+        playedSwingFx = false;
         int mouseX = 0;
         int mouseY = 0;
         mouseX = MouseStatus::m_x;
         mouseY = MouseStatus::m_y;
-        qDebug() << "SetInitialPos ";
         setInitialMousePos(mouseX, mouseY);
-        //MouseStatus::mousePressed = false;
     }
     if (mouseDown && canMove)
     {
-        //IMPORTANT
         int mouseX = 0;
         int mouseY = 0;
         mouseX = MouseStatus::m_x;
@@ -117,13 +114,12 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
         velocity1D = std::sqrt(std::pow(std::abs(getVelocity().x()), 2) + std::pow(std::abs(getVelocity().y()), 2));
         launchedVelocity1D = velocity1D;
 
-        //point->setPos(getPos().x() + 8, getPos().y() + 8 );// + 8 - 32);
-        point->setPos(getPos().x()+8, getPos().y() + 8);
-        point->setOrigin(getPos().x()+8, getPos().y()+8);
-        point->setAngle(std::atan2(velocity.y(), velocity.x())*(180/3.1415) + 90);
-        point->setPos(point->getPos().x() - 8*cosf(point->getAngle()*(3.14f/180.0f)),
-                      point->getPos().y() - 8*sinf(point->getAngle()*(3.14f/180.0f)));
-        qDebug() << point->getAngle();
+        int radiusOfBall = 8;
+        point->setPos(getPos().x()+radiusOfBall, getPos().y() + radiusOfBall);
+        point->setOrigin(getPos().x()+radiusOfBall, getPos().y()+radiusOfBall);
+        point->setAngle(std::atan2(velocity.y(), velocity.x())*(RAD_TO_DEGREE) + 90);
+        point->setPos(point->getPos().x() - radiusOfBall*cosf(point->getAngle()*(DEGREE_TO_RAD)),
+                      point->getPos().y() - radiusOfBall*sinf(point->getAngle()*(DEGREE_TO_RAD)));
 
         dirX = velocity.x()/std::abs(velocity.x());
         dirY = velocity.y()/std::abs(velocity.y());
@@ -165,7 +161,6 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
         }
         else
         {
-            //Important
             setVelocity(0,0);
             int mouseX = 0;
             int mouseY = 0;
