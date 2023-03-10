@@ -25,6 +25,7 @@ struct MouseStatus
 
 class GameScene : public QGraphicsScene
 {
+    Q_OBJECT
 public:
     GameScene(QObject* parent = nullptr);
     ~GameScene();

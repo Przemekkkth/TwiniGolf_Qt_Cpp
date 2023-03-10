@@ -13,10 +13,10 @@
         <file>res/sprite/bg.png</file>
         <file>res/sprite/title.png</file>
         <file>res/sprite/buttons.png</file>
-        <file>res/sprite/sfml-logo-small.png</file>
         <file>res/sprite/powermeter_bg.png</file>
         <file>res/sprite/levelText_bg.png</file>
         <file>res/sprite/UI_bg.png</file>
         <file>res/font/minecraft.ttf</file>
+        <file>res/sprite/Qt_logo.png</file>
     </qresource>
 </RCC>

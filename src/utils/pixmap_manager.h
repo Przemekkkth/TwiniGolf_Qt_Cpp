@@ -13,7 +13,7 @@ public:
         Ball_Shadow, BG,  LevelText, Powermeter_FG, Powermeter_BG, Powermeter_Overlay,
         Title, UI_BG,
         Buttons,
-        SFMLlogo
+        QtLogo
     };
     static PixmapManager* Instance();
     QPixmap& getPixmap(TextureID id);
