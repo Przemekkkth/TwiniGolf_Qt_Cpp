@@ -13,6 +13,7 @@ class World
 public:
     World();
     ~World();
+    void initWorld(int level);
     void draw(GameScene& gScene);
     void drawUI(GameScene& gScene);
     void drawBGUI(GameScene& gScene, QPoint pos);
@@ -29,6 +30,7 @@ private:
     void loadLevel(int level);
     QString getStrokeText();
     QString getLevelText(int side);
+    void clearTiles();
 };
 
 #endif // WORLD_H

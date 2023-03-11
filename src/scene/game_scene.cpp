@@ -32,6 +32,18 @@ GameScene::~GameScene()
     delete mWorld;
 }
 
+void GameScene::startGame(int level)
+{
+    m_timer.start(int(1000.0f/FPS));
+    m_elapsedTimer.start();
+    mWorld->initWorld(level);
+}
+
+void GameScene::stopGame()
+{
+    m_timer.stop();
+}
+
 void GameScene::resetStatus()
 {
     for(int i = 0; i < 256; ++i)

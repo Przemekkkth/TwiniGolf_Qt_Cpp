@@ -68,7 +68,7 @@ void WinScene::updateText()
     }
 }
 
-void WinScene::keyPressEvent(QKeyEvent *event)
+void WinScene::keyReleaseEvent(QKeyEvent *event)
 {
     emit menuActivated();
     QGraphicsScene::keyPressEvent(event);

@@ -27,13 +27,18 @@ World::World()
     loadLevel(level);
 }
 
-World::~World()
+void World::clearTiles()
 {
     for(auto tile: tiles)
     {
         delete tile;
     }
     tiles.clear();
+}
+
+World::~World()
+{
+    clearTiles();
 
     for(auto hole : holes)
     {
@@ -43,6 +48,20 @@ World::~World()
 
     delete balls[0];
     delete balls[1];
+}
+
+void World::initWorld(int level)
+{
+    this->level = level;
+    gameRunning = true;
+    mouseDown = false;
+    mousePressed = false;
+
+    swingPlayed = false;
+    secondSwingPlayed = false;
+
+    loadLevel(level);
+
 }
 
 void World::draw(GameScene& gScene)
@@ -302,6 +321,7 @@ void World::loadLevel(int level)
     balls[0]->setWin(false);
     balls[1]->setWin(false);
 
+    clearTiles();
     tiles = loadTiles(level);
 
     switch (level)

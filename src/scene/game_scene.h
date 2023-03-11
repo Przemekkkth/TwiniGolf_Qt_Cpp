@@ -29,6 +29,8 @@ class GameScene : public QGraphicsScene
 public:
     GameScene(QObject* parent = nullptr);
     ~GameScene();
+    void startGame(int level);
+    void stopGame();
 private slots:
     void loop();
 private:

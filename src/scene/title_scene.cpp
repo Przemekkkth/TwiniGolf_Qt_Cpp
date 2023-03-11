@@ -57,7 +57,7 @@ void TitleScene::updateText()
     }
 }
 
-void TitleScene::keyPressEvent(QKeyEvent *event)
+void TitleScene::keyReleaseEvent(QKeyEvent *event)
 {
     emit menuActivated();
     QGraphicsScene::keyPressEvent(event);
