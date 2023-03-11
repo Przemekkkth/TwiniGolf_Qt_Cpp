@@ -19,7 +19,7 @@ View::View()
         this->setScene(mLevelScene);
     });
     connect(mMenuScene, &MenuScene::gameActivated, [this](){
-        mGameScene->startGame(1);
+        mGameScene->startGame(0);
         this->setScene(mGameScene);
     });
     connect(mLevelScene, &LevelScene::menuActivated, [this](){
@@ -30,6 +30,11 @@ View::View()
     connect(mLevelScene, &LevelScene::gameActivated, [this](int level){
         mGameScene->startGame(level);
         this->setScene(mGameScene);
+    });
+
+    connect(mGameScene, &GameScene::menuActivated, [this](){
+        mMenuScene->prepareScene();
+        this->setScene(mMenuScene);
     });
 
     connect(mWinScene, &WinScene::menuActivated, [this](){

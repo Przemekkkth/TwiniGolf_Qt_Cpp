@@ -67,10 +67,20 @@ void GameScene::loop()
     while( m_loopTime > m_loopSpeed)
     {
         m_loopTime -= m_loopSpeed;
+        handlePlayerInput();
         updateScene(m_loopSpeed);
         draw();
 
         resetStatus();
+    }
+}
+
+void GameScene::handlePlayerInput()
+{
+    if(m_keys[KEYBOARD::KEY_BACKSPACE]->m_released)
+    {
+        stopGame();
+        emit menuActivated();
     }
 }
 

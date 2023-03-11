@@ -33,7 +33,10 @@ public:
     void stopGame();
 private slots:
     void loop();
+signals:
+    void menuActivated();
 private:
+    void handlePlayerInput();
     void updateScene(float elapsedTime);
     void draw();
 
