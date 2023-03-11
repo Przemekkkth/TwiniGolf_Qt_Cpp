@@ -35,6 +35,7 @@ private slots:
     void loop();
 signals:
     void menuActivated();
+    void winActivated();
 private:
     void handlePlayerInput();
     void updateScene(float elapsedTime);

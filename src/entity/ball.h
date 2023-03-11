@@ -41,6 +41,7 @@ public:
     void setVelocity(float x, float y);
     void setLaunchedVelocity(float x, float y);
     void update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Tile *> tiles, QVector<Hole *> holes);
+    void setStrokes(int val);
 private:
     QVector2D velocity;
     QVector2D target;

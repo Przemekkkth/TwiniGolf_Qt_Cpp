@@ -87,6 +87,11 @@ void GameScene::handlePlayerInput()
 void GameScene::updateScene(float elapsedTime)
 {
     mWorld->update(elapsedTime);
+    if(mWorld->isWinActivated())
+    {
+        emit winActivated();
+        stopGame();
+    }
 }
 
 void GameScene::draw()

@@ -212,3 +212,8 @@ void Ball::update(float deltaTime, bool mouseDown, bool mousePressed, QVector<Ti
     }
 
 }
+
+void Ball::setStrokes(int val)
+{
+    strokes = val;
+}

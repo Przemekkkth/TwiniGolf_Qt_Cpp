@@ -1,4 +1,5 @@
 #include "view.h"
+#include "utils/utils.h"
 
 View::View()
     : mGameScene(new GameScene(this)),
@@ -8,12 +9,13 @@ View::View()
       mWinScene(new WinScene(this))
 {
     setScene(mTitleScene);
-    resize(mGameScene->sceneRect().width()+2, mGameScene->sceneRect().height()+2);
+    resize(SCREEN::PHYSICAL_SIZE.width()+2, SCREEN::PHYSICAL_SIZE.height()+2);
 
     connect(mTitleScene, &TitleScene::menuActivated, [this](){
         this->mTitleScene->stopTimer();
         this->setScene(mMenuScene);
     });
+
     connect(mMenuScene, &MenuScene::levelsActivated, [this](){
         mLevelScene->prepareScene();
         this->setScene(mLevelScene);
@@ -22,6 +24,11 @@ View::View()
         mGameScene->startGame(0);
         this->setScene(mGameScene);
     });
+
+    connect(mGameScene, &GameScene::winActivated, [this](){
+        setScene(mWinScene);
+    });
+
     connect(mLevelScene, &LevelScene::menuActivated, [this](){
         mMenuScene->prepareScene();
         this->setScene(mMenuScene);

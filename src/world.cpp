@@ -16,6 +16,7 @@ World::World()
     holes = { new Hole(QVector2D(0.0f, 0.0f)), new Hole(QVector2D(0.0f, 0.0f))};
 
     level = 0;
+    state = 0;
     tiles = loadTiles(level);
     gameRunning = true;
     mouseDown = false;
@@ -56,12 +57,13 @@ void World::initWorld(int level)
     gameRunning = true;
     mouseDown = false;
     mousePressed = false;
-
+    state = 0;
     swingPlayed = false;
     secondSwingPlayed = false;
 
+    balls[0]->setStrokes(0);
+    balls[1]->setStrokes(0);
     loadLevel(level);
-
 }
 
 void World::draw(GameScene& gScene)
@@ -169,6 +171,15 @@ void World::update(float elapsedTime)
         level++;
         loadLevel(level);
     }
+}
+
+bool World::isWinActivated()
+{
+    if(state == 2)
+    {
+        return true;
+    }
+    return false;
 }
 
 QVector<Tile *> World::loadTiles(int level)
