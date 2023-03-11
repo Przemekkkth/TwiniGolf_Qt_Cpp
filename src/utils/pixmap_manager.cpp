@@ -35,13 +35,12 @@ PixmapManager::PixmapManager()
     m_textures.load(TextureID::Tile_Light64, ":/res/sprite/tile64_light.png");
 
     m_textures.load(TextureID::UI_BG, ":/res/sprite/UI_bg.png");
-//    m_textures.load(TextureID::Blocks, ":/res/blocks.png");
     m_textures.load(TextureID::Title, ":/res/sprite/title.png");
     m_textures.load(TextureID::QtLogo, ":/res/sprite/Qt_logo.png");
 
-//    std::unique_ptr<QPixmap> ButtonUnselected(new QPixmap(getPixmap(TextureID::Buttons).copy(0,0,200,50)));
-//    m_textures.insertResource(TextureID::ButtonUnselected, std::move(ButtonUnselected));
+    std::unique_ptr<QPixmap> ButtonUnselected(new QPixmap(getPixmap(TextureID::Buttons).copy(0,0,200,50)));
+    m_textures.insertResource(TextureID::ButtonUnselected, std::move(ButtonUnselected));
 
-//    std::unique_ptr<QPixmap> ButtonSelected(new QPixmap(getPixmap(TextureID::Buttons).copy(0,50,200,50)));
-//    m_textures.insertResource(TextureID::ButtonSelected, std::move(ButtonSelected));
+    std::unique_ptr<QPixmap> ButtonSelected(new QPixmap(getPixmap(TextureID::Buttons).copy(0,50,200,50)));
+    m_textures.insertResource(TextureID::ButtonSelected, std::move(ButtonSelected));
 }

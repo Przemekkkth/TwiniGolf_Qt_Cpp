@@ -11,6 +11,7 @@ class TitleScene : public QGraphicsScene
     Q_OBJECT
 public:
     TitleScene(QObject *parent = nullptr);
+    void stopTimer();
 signals:
     void menuActivated();
 

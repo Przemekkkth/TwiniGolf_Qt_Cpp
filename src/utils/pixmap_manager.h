@@ -12,7 +12,7 @@ public:
         Ball, Hole, Point, Tile_Dark32, Tile_Dark64, Tile_Light32, Tile_Light64,
         Ball_Shadow, BG,  LevelText, Powermeter_FG, Powermeter_BG, Powermeter_Overlay,
         Title, UI_BG,
-        Buttons,
+        Buttons, ButtonUnselected, ButtonSelected,
         QtLogo
     };
     static PixmapManager* Instance();

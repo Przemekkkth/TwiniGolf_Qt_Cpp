@@ -39,6 +39,11 @@ TitleScene::TitleScene(QObject *parent)
     timer->start(1000);
 }
 
+void TitleScene::stopTimer()
+{
+    timer->stop();
+}
+
 void TitleScene::updateText()
 {
     isShow = !isShow;

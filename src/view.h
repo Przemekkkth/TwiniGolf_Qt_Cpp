@@ -13,7 +13,6 @@ class View : public QGraphicsView
     Q_OBJECT
 public:
     explicit View();
-
 signals:
 
 private:
