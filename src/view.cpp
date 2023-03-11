@@ -1,5 +1,7 @@
 #include "view.h"
 #include "utils/utils.h"
+#include <QKeyEvent>
+#include <QDir>
 
 View::View()
     : mGameScene(new GameScene(this)),
@@ -53,4 +55,24 @@ View::View()
     //setMouseTracking(true);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+
+void View::keyReleaseEvent(QKeyEvent *event)
+{
+    if(!event->isAutoRepeat())
+    {
+        if(event->key() == Qt::Key_Z)
+        {
+//            static int index = 0;
+//            QString fileName = QDir::currentPath() + QDir::separator() + "screen" + QString::number(index++) + ".png";
+//            QRect rect = sceneRect().toAlignedRect();
+//            QImage image(rect.size(), QImage::Format_ARGB32);
+//            image.fill(Qt::transparent);
+//            QPainter painter(&image);
+//            render(&painter);
+//            image.save(fileName);
+//            qDebug() << "saved " << fileName;
+        }
+    }
+    QGraphicsView::keyReleaseEvent(event);
 }

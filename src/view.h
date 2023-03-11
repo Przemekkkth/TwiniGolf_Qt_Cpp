@@ -21,6 +21,10 @@ private:
     MenuScene* mMenuScene;
     TitleScene* mTitleScene;
     WinScene* mWinScene;
+
+    // QWidget interface
+protected:
+    virtual void keyReleaseEvent(QKeyEvent *event) override;
 };
 
 #endif // VIEW_H
