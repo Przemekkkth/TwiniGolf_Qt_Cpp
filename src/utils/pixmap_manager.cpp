@@ -26,7 +26,6 @@ PixmapManager::PixmapManager()
     m_textures.load(TextureID::LevelText, ":/res/sprite/levelText_bg.png");
     m_textures.load(TextureID::Point, ":/res/sprite/point.png");
     m_textures.load(TextureID::Powermeter_BG, ":/res/sprite/powermeter_bg.png");
-    m_textures.load(TextureID::Powermeter_FG, ":/res/sprite/powermeter_fg.png");
     m_textures.load(TextureID::Powermeter_Overlay, ":/res/sprite/powermeter_overlay.png");
 
     m_textures.load(TextureID::Tile_Dark32, ":/res/sprite/tile32_dark.png");

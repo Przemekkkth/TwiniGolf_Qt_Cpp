@@ -6,8 +6,6 @@ PowerBar::PowerBar()
 {
     //BG
     setTex(PixmapManager::TextureID::Powermeter_BG);
-    //FG
-    foregroundTex = PixmapManager::Instance()->getPixmap(PixmapManager::TextureID::Powermeter_FG);
     //Overlay
     overlayTex = PixmapManager::Instance()->getPixmap(PixmapManager::TextureID::Powermeter_Overlay);
 }
@@ -45,38 +43,28 @@ void PowerBar::draw(GameScene &target) const
     overlayItem->setTransform(overlayTransform);
     target.addItem(overlayItem);
 
-    QGraphicsPixmapItem* fgItem = new QGraphicsPixmapItem();
-    fgItem->setPixmap(foregroundTex);
-    fgItem->setTransformOriginPoint(getOrigin().x(), getOrigin().y());
+    QGraphicsRectItem* fgRect = new QGraphicsRectItem();
+    fgRect->setRect(0,0,8,56);
     QTransform fgTransform;
     fgTransform.translate(getPos().x(), getPos().y());
     fgTransform.scale(getFGScale().x(), getFGScale().y());
     fgTransform.rotate(getAngle());
-    fgItem->setTransform(fgTransform);
-    fgItem->moveBy(+4,+4);
-    target.addItem(fgItem);
-
-//    sf::Sprite fgSprite;
-//    fgSprite.setTexture(foregroundTex);
-//    fgSprite.setOrigin(getOrigin());
-//    fgSprite.setPosition(getPos().x+4, getPos().y+4+32-32*getFGScale().y);
-//    if( getFGScale().y < 0.25f)
-//    {
-//        fgSprite.setColor(sf::Color::Green);
-//    }
-//    else if( getFGScale().y > 0.25 && getFGScale().y < 0.75)
-//    {
-
-//        fgSprite.setColor(sf::Color::Yellow);
-//    }
-//    else
-//    {
-//        fgSprite.setColor(sf::Color::Red);
-//    }
-
-//    fgSprite.setScale(getFGScale());
-//    fgSprite.setRotation(getAngle());
-//    target.draw(fgSprite, states);
-
-
+    fgRect->setTransform(fgTransform);
+    fgRect->moveBy(+4,+4);
+    if( getFGScale().y() < 0.25f)
+    {
+        fgRect->setPen(QPen(Qt::green));
+        fgRect->setBrush(Qt::green);
+    }
+    else if(getFGScale().y() > 0.25f && getFGScale().y() < 0.75f)
+    {
+        fgRect->setPen(QPen(Qt::yellow));
+        fgRect->setBrush(Qt::yellow);
+    }
+    else
+    {
+        fgRect->setPen(QPen(Qt::red));
+        fgRect->setBrush(Qt::red);
+    }
+    target.addItem(fgRect);
 }

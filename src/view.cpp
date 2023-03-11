@@ -7,7 +7,7 @@ View::View()
       mTitleScene(new TitleScene(this)),
       mWinScene(new WinScene(this))
 {
-    setScene(mWinScene);
+    setScene(mGameScene);
     resize(mGameScene->sceneRect().width()+2, mGameScene->sceneRect().height()+2);
 
     connect(mTitleScene, &TitleScene::menuActivated, [this](){

@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>res/sprite/powermeter_overlay.png</file>
         <file>res/sprite/point.png</file>
-        <file>res/sprite/powermeter_fg.png</file>
         <file>res/sprite/ball_shadow.png</file>
         <file>res/sprite/tile64_dark.png</file>
         <file>res/sprite/tile64_light.png</file>
