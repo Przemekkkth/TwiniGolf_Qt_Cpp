@@ -2,6 +2,7 @@
 #include "../utils/pixmap_manager.h"
 #include "../utils/font_manager.h"
 #include "../utils/utils.h"
+#include "game_scene.h"
 #include <QTimer>
 
 WinScene::WinScene(QObject *parent)
@@ -28,7 +29,7 @@ WinScene::WinScene(QObject *parent)
     resultFont.setBold(true);
     resultText->setFont(resultFont);
     resultText->setBrush(Qt::white);
-    resultText->setText("Result: " + QString("0000").right(5));
+    resultText->setText("Result: " + QString::number(GameScene::result).right(5));
     resultText->setPos(320 - resultText->boundingRect().width()/2.0f,
                        350 - resultText->boundingRect().height()/2.0f);
 
@@ -53,6 +54,11 @@ WinScene::WinScene(QObject *parent)
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &WinScene::updateText);
     timer->start(1000);
+}
+
+void WinScene::setResultText()
+{
+    resultText->setText("Result: " + QString::number(GameScene::result));
 }
 
 void WinScene::updateText()

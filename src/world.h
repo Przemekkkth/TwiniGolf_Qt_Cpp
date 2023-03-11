@@ -20,6 +20,7 @@ public:
     void drawUIText(GameScene& gScene, QPoint pos, QColor color, QString text);
     void update(float elapsedTime);
     bool isWinActivated();
+    int getResult();
 private:
     Ball *balls[2];
     QVector<Hole*> holes;

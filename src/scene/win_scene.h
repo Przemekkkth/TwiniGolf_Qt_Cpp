@@ -9,6 +9,7 @@ class WinScene : public QGraphicsScene
     Q_OBJECT
 public:
     WinScene(QObject* parent = nullptr);
+    void setResultText();
 signals:
     void menuActivated();
 

@@ -31,6 +31,7 @@ public:
     ~GameScene();
     void startGame(int level);
     void stopGame();
+    static int result;
 private slots:
     void loop();
 signals:

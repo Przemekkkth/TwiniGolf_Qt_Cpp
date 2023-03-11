@@ -182,6 +182,20 @@ bool World::isWinActivated()
     return false;
 }
 
+int World::getResult()
+{
+    int biggestStroke = 0;
+    if (balls[1]->getStrokes() > balls[0]->getStrokes())
+    {
+        biggestStroke = balls[1]->getStrokes();
+    }
+    else
+    {
+        biggestStroke = balls[0]->getStrokes();
+    }
+    return biggestStroke;
+}
+
 QVector<Tile *> World::loadTiles(int level)
 {
     QVector<Tile*> temp = {};

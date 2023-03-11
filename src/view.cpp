@@ -26,6 +26,7 @@ View::View()
     });
 
     connect(mGameScene, &GameScene::winActivated, [this](){
+        mWinScene->setResultText();
         setScene(mWinScene);
     });
 

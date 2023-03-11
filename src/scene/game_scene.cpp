@@ -10,6 +10,8 @@ bool MouseStatus::m_released = false;
 bool MouseStatus::mouseDown = false;
 bool MouseStatus::mousePressed = false;
 
+int GameScene::result = 0;
+
 GameScene::GameScene(QObject *parent)
     : QGraphicsScene(parent)
 {
@@ -36,6 +38,7 @@ void GameScene::startGame(int level)
 {
     m_timer.start(int(1000.0f/FPS));
     m_elapsedTimer.start();
+    result = 0;
     mWorld->initWorld(level);
 }
 
@@ -89,8 +92,10 @@ void GameScene::updateScene(float elapsedTime)
     mWorld->update(elapsedTime);
     if(mWorld->isWinActivated())
     {
-        emit winActivated();
+        GameScene::result = mWorld->getResult();
         stopGame();
+        emit winActivated();
+
     }
 }
 
