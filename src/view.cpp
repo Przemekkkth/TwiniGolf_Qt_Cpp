@@ -7,7 +7,7 @@ View::View()
       mTitleScene(new TitleScene(this)),
       mWinScene(new WinScene(this))
 {
-    setScene(mTitleScene);
+    setScene(mWinScene);
     resize(mGameScene->sceneRect().width()+2, mGameScene->sceneRect().height()+2);
 
     connect(mTitleScene, &TitleScene::menuActivated, [this](){
@@ -19,6 +19,11 @@ View::View()
         this->setScene(mLevelScene);
     });
     connect(mLevelScene, &LevelScene::menuActivated, [this](){
+        mMenuScene->prepareScene();
+        this->setScene(mMenuScene);
+    });
+
+    connect(mWinScene, &WinScene::menuActivated, [this](){
         mMenuScene->prepareScene();
         this->setScene(mMenuScene);
     });
